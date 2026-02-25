@@ -35,11 +35,11 @@ This application allows users to browse products, add items to cart, and place o
 3. **Create a virtual environment**
     ```bash
     python -m venv venv
-4. **Activate the environment**
-    ```bash(Windows)
+4. **Activate the environment(Windows)**
+    ```bash
     venv\Scripts\activate
-    
-    ```bash(MacOS/Linux)
+4.   **Activate the environment(macOS/Linux)**:
+    ```bash
     source venv/bin/activate
 5. **Install dependencies**
     ```bash
@@ -70,11 +70,20 @@ FarmFresh/
 
 ## 📖 Learning Purpose
 
+📖 Learning Purpose
+
 This project is built for learning Django fundamentals including:
--Models
--Views
--Templates
--Authentication
--Cart functionality
--Payment integration
--Media handling
+
+Models
+
+Views
+
+Templates
+
+Authentication
+
+Cart functionality
+
+Payment integration
+
+Media handling
