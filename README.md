@@ -38,9 +38,6 @@ This application allows users to browse products, add items to cart, and place o
 4. **Activate the environment(Windows)**
     ```bash
     venv\Scripts\activate
-4.   **Activate the environment(macOS/Linux)**
-    ```bash
-    source venv/bin/activate
 5. **Install dependencies**
     ```bash
     pip install -r requirements.txt
