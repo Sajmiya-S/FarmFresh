@@ -1,0 +1,153 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* TITLE */
+.title {
+    text-align: center;
+    margin: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.title h2 {
+    color: blue;
+}
+
+/* STATUS BADGE */
+.status {
+    padding: 6px 16px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    margin: 6px 0;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.status.pending {
+    background-color: rgb(221, 161, 49);
+}
+
+.status.shipped,
+.status.delivered {
+    background-color: green;
+}
+
+/* MAIN LAYOUT */
+.orders {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+}
+
+/* LEFT SIDE */
+.items {
+    flex: 3;
+    min-width: 0;
+}
+
+/* PRODUCT CARD */
+.item {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+}
+
+.item:hover {
+    transform: translateY(-3px);
+}
+
+/* IMAGE */
+.pic {
+    flex-shrink: 0;
+}
+
+.pic img {
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* DETAILS */
+.details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* QUANTITY */
+.quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.qty-box {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* BUTTONS */
+.btns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* RIGHT SIDE SUMMARY */
+.summary {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 30px;
+}
+
+.addr {
+    margin-bottom: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .orders {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pic img {
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+    }
+
+    .summary {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+    }
+}

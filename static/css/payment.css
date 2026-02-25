@@ -1,0 +1,69 @@
+body {
+    background: #f5f7fb;
+    font-family: 'Delius', cursive;
+}
+
+.main {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.main h1 {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.main p {
+    max-width: 500px;
+}
+
+/* Payment Card */
+.tb {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+    transition: 0.3s ease;
+}
+
+.tb:hover {
+    transform: translateY(-3px);
+}
+
+/* Total row highlight */
+.tb .fw-bold {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+/* Pay Button */
+#rzp-btn {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+#rzp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+.badge-img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}

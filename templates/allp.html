@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/allp.css">
+{% endblock %}
+
+{% block code %}
+    <h1 class="text-center mt-4 mb-2" style="font-family: 'Quicksand',cursive; font-weight:bold;color:green;">Our Fresh Picks</h1>
+    <div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
+    {% for i in allp %}
+    <a href="{% url 'pdet' i.id %} " class="text-decoration-none text-dark">
+        <div class="card sub" style="width: 18rem;">
+            <img src="/shop/{{i.pic}}" class="card-img-top product-img" alt="{{ i.name }}">
+            <div class="card-body">
+                <h5 class="card-title ">{{ i.name }}</h5>
+                <p class="card-text">{{i.description}}</p>
+                <p class="card-text">₹ {{i.price}}/Kg</p>
+                {% if i.stock == 0 %}
+                    <p class="card-text text-secondary"><strong>Out of Stock</strong></p>
+                {% elif i.stock < 10 %}
+                    <p class="card-text text-danger"><strong>Only Few Left</strong></p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

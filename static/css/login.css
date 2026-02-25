@@ -1,0 +1,142 @@
+
+.main{
+    min-height: 100vh;
+    background-image: url(/static/images/login.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    flex-direction: column;
+}
+.main h1{
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    padding-top: 30px;
+    color: rgb(3, 61, 3);
+}
+.login{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 120px);
+}
+.login h1{
+    text-align: center;
+    color: white;
+}
+
+.login p{
+    color: white;
+}
+
+.login b{
+    color: rgb(119, 224, 119); 
+    font-family: 'Dancing Script', cursive;
+}
+
+.loginform{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 500px;
+    
+}
+
+.loginform input{
+    padding: 10px;
+    border-radius: 10px;
+    width:80%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2); /* semi-transparent glass effect */
+    color: white;
+    font-size: 16px;
+    outline: none;
+    backdrop-filter: blur(5px);
+}
+
+.loginform input[type='submit']{
+    background-color: rgb(16, 108, 16);
+    backdrop-filter: blur(5px);
+    color:white;
+    width:75%;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.loginform input[type='submit']:hover{
+    background-color: rgb(20, 150, 20);
+    transform: scale(1.02);
+}
+
+
+.check{
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    gap: 8px; /* space between checkbox and text */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.new{
+    display:flex;
+}
+
+.loginform a{
+    color: white;
+    gap:10px;
+}
+
+
+@media (max-width: 768px){
+
+    .main h1{
+        font-size: 22px;
+        padding-top: 20px;
+    }
+
+    .login h1{
+        font-size: 24px;
+    }
+
+    .login{
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .loginform{
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .loginform input{
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .loginform input[type='submit']{
+        width: 100%;
+    }
+
+    .check{
+        font-size: 13px;
+        justify-content: center;
+    }
+
+    .new{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 4px;
+    }
+
+    .new p{
+        margin: 0;
+    }
+}

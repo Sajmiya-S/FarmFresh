@@ -1,0 +1,40 @@
+h1{
+    font-family:'Delius',cursive;
+    color: green; 
+    font-weight:bold;
+}
+
+/* Card styling */
+.card.sub {
+    width: 400px;                
+    border-radius: 16px;
+    overflow: hidden;            
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.sub:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 128, 0, 0.25);
+}
+
+/* Card body text */
+.card-body {
+    padding: 14px;
+}
+
+.card-title {
+    font-weight: 600;
+    color: #1b5e20;
+}
+
+.card-text {
+    color: #555;
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+    .card.sub {
+        width: 100%;
+    }
+}

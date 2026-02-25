@@ -1,0 +1,50 @@
+
+.sub {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sub:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+
+.card.sub {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content to use full card height */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 450px; /* Fixed height for all cards */
+}
+.img-wrapper {
+    height: 300px;       /* fixed height */
+    display: flex;
+    align-items: center;  /* vertically center if image smaller */
+    justify-content: center;
+    background-color: white;
+    padding: 10px;
+}
+
+.product-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+
+
+@media (max-width: 576px) {
+    .product-img {
+        height: 180px;
+    }
+}

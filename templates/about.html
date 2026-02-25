@@ -1,0 +1,69 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/about.css">
+{% endblock %}
+
+{% block code %}
+<div class="about">
+    <h2>About</h2> 
+    <h1 class="brand" >
+        <i class="fa-solid fa-leaf"></i>
+        FarmFresh
+        <i class="fa-solid fa-basket-shopping"></i>
+    </h1>
+    <p>
+        At  <strong style=" font-family: 'Dancing Script', cursive;">FarmFresh</strong> , we believe in bringing the freshest, most nutritious fruits and vegetables directly from our farm to your table. 
+        Our produce is 100% organic, locally grown, and hand-picked for quality and taste.
+    </p>
+    <p>
+        We work closely with trusted farmers to ensure sustainable farming practices and minimal carbon footprint. Every bite supports healthier living and a healthier planet.
+    </p>
+
+    <h2 >Why Choose <strong class="brand"><i class="fa-solid fa-leaf"></i>FarmFresh<i class="fa-solid fa-basket-shopping"></i></strong> ?</h2>
+    <div class="whyus">
+        <div class="img">
+            <img src="/static/images/pic1.webp" alt="farmer">
+        </div>
+        
+        <div class="goals">
+            <div class="list">
+                <i class="fas fa-seedling fa-3x text-success mb-3"></i>
+                <h5>Organic & Natural</h5>
+            </div>
+            <div class="list">
+                <i class="fas fa-truck fa-3x text-success mb-3"></i>
+                <h5>Fast Delivery</h5>
+            </div>
+            <div class="list">
+                <i class="fas fa-handshake fa-3x text-success mb-3"></i>
+                <h5>Trusted Farmers</h5>
+            </div>
+            <div class="list">
+                <i class="fas fa-credit-card fa-3x text-success mb-3"></i>
+                <h5>Easy Payment</h5>   
+            </div>
+        </div>
+
+        <div class="img">
+            <img src="/static/images/pic1.jpg" alt="farmer">
+        </div>
+    </div>
+</div>
+<div class="contact">
+    <h2>Let’s Stay Fresh Together!</h2>
+    <h5>Fresh ideas, fresh questions, fresh veggies! Let us know what’s on your mind — we love hearing from our FarmFresh community.</h5>
+    <div class="msg">
+        <img src="/static/images/msg.png" alt="">
+        <form class="msgform" method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Send Fresh Message">
+        </form>
+    </div>
+    
+</div>
+{% endblock %}

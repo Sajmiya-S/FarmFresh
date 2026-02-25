@@ -1,0 +1,34 @@
+
+.sub {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+h1{
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-size: 3rem;
+    color:green;
+    
+}
+.sub:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+
+.product-img {
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 14px;
+}

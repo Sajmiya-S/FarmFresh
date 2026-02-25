@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="/static/css/order.css">
+<div class="order-card">
+
+    <!-- ORDER TITLE -->
+    <h5 class="order-title">
+        Order #{{ order.id }}
+    </h5>
+
+    <!-- DETAILS + BUTTONS ROW -->
+    <div class="order-body">
+
+        <div class="desc">
+            <p>Placed on: {{ order.order_date|date:"M d, Y" }}</p>
+            <span>Status  : </span>
+            <span class="status {{order.status|lower}}">
+                <strong>{{ order.status }}</strong>
+            </span>
+        </div>
+
+        <div class="btns m-2 ">
+            <a href="{% url 'odet' order.id %}" class="btn btn-success m-2">
+                View Details
+            </a>
+
+            {% if order.status == "Pending" %}
+                <button type="button"
+                        class="btn btn-danger m-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#deleteModal{{ order.id }}">
+                    Cancel Order
+                </button>
+            {% endif %}
+                
+        </div>
+
+    </div>
+
+</div>
+{% if order.status == "Pending" %}
+<div class="modal fade"
+        id="deleteModal{{ order.id }}"
+        tabindex="-1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Cancel</h5>
+                    <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body text-center">
+                Are you sure you want to cancel this order?
+            </div>
+
+            <div class="modal-footer justify-content-center">
+                <form method="POST" action="{% url 'cancel' order.id %}">
+                {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        Yes, Cancel
+                    </button>
+                </form>
+
+                <button type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                        No
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+

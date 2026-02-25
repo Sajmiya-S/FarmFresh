@@ -1,0 +1,163 @@
+/* =========================
+   BACKGROUND & HEADING
+========================= */
+.addr {
+    background-image: url(/static/images/bg1.png);
+    background-position: center 75%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 700px;
+}
+
+.addr h1,
+.addr > p {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* =========================
+   SAVED ADDRESS SECTION
+========================= */
+.saved {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 50px;
+    padding: 50px;
+}
+
+.saved a {
+    text-decoration: none;
+}
+
+.saved p {
+    color: black !important;
+}
+
+/* =========================
+   SAVED ADDRESS CARDS
+========================= */
+.saved .card:not(.add-new-card) {
+    width: 18rem;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    transition: 0.3s ease;
+}
+
+.saved .card:not(.add-new-card):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.saved .card .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* =========================
+   BUTTONS (Responsive)
+========================= */
+.saved .card .card-body .btn-group {
+    display: flex;
+    flex-direction: row; 
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.saved .card .card-body .btn-group .btn {
+    flex: 1;
+}
+
+
+/* =========================
+   ADD NEW ADDRESS CARD (UNTOUCHED)
+========================= */
+.add-new-card {
+    border: 2px dashed #4c8b2c;
+    background: #f6fbef;
+}
+
+.add-new-card .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================
+   GLASS MODAL
+========================= */
+.glass-modal .modal-content {
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.glass-modal .modal-header,
+.glass-modal .modal-footer {
+    border: none;
+}
+
+.glass-modal .modal-title {
+    font-weight: 600;
+}
+
+.glass-modal .btn-danger {
+    border-radius: 30px;
+    padding: 8px 20px;
+}
+
+.glass-modal .btn-outline-secondary {
+    border-radius: 30px;
+    background: green;
+    color: white;
+    border-color: rgba(255,255,255,0.5);
+}
+
+.glass-modal .btn-outline-secondary:hover {
+    background: rgb(32, 152, 32);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 992px) {
+    .saved {
+        margin: 30px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .addr {
+        background-image: none;
+        background-color: #f5f9ee;
+        min-height: auto;
+    }
+
+    .addr h1,
+    .addr > p {
+        color: #2f5e1c;
+    }
+
+    .saved {
+        margin: 20px;
+        padding: 10px;
+    }
+
+    /* Saved cards become full width */
+    .saved .card:not(.add-new-card) {
+        width: 100%;
+    }
+
+    /* Stack buttons */
+    .saved .card .card-body .btn-group {
+        flex-direction: column;
+    }
+}

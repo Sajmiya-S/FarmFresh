@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/orderdetails.css' %}">
+{% endblock %}
+
+{% block code %}
+<div class="main">
+
+    <div class="title">
+        <h1>Order Details</h1>
+        <h2>Order #{{ order.id }}</h2>
+        <button class="status {{ order.status|lower }}">{{ order.status }}</button>
+        <p>Placed on : {{ order.order_date|date:"M d, Y" }}</p>
+        <span>Total : <strong>Rs. {{ total_price }}</strong></span>
+    </div>
+
+    <h2 class="text-center">Items in this order</h2>
+
+    <div class="orders">
+
+        <!-- LEFT SIDE : ITEMS -->
+        <div class="items">
+
+            {% for item in items %}
+            <div class="item">
+
+                <div class="pic">
+                    <img src="/shop/{{ item.product.pic }}" alt="{{ item.product.name }}">
+                </div>
+
+                <div class="details">
+                    <h3>{{ item.product.name }}</h3>
+                    <h5>Rs. {{ item.price }}</h5>
+
+                    <div class="quantity">
+                        <div>
+                            Quantity :
+                            <span class="qty-box">{{ item.quantity }}</span>
+                        </div>
+                        <div>
+                            <strong>Rs. {{ item.sub_total }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+
+            <div class="btns">
+                <a href="{% url 'order' %}" class="btn btn-success">
+                    Back to Orders
+                </a>
+
+                {% if order.status == "Pending" %}
+                <button type="button"
+                        class="btn btn-danger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#deleteModal{{ order.id }}">
+                    Cancel Order
+                </button>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE : SUMMARY -->
+        <div class="summary">
+
+            <div class="addr">
+                <h4>Shipping Information</h4>
+                <p>{{ usr.user.username }}</p>
+                <p>{{ address.house_no }}, {{ address.street }}, {{ address.city }}</p>
+                <p>{{ address.district }}, {{ address.state }} - {{ address.pin }}</p>
+                <p>Ph : {{ usr.phone }}</p>
+            </div>
+
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <h4>Order Summary</h4>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-start">Items</td>
+                        <td class="text-end">{{ total_items }}</td>
+                    </tr>
+
+                    <tr class="fw-bold">
+                        <td class="text-start">Total</td>
+                        <td class="text-end">Rs. {{ total_price }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-start">Payment</td>
+                        <td class="text-end">{{pay.method|upper}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% if order.status == "Pending" %}
+<div class="modal fade"
+     id="deleteModal{{ order.id }}"
+     tabindex="-1"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Cancel</h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body text-center">
+                Are you sure you want to cancel this order?
+            </div>
+
+            <div class="modal-footer justify-content-center">
+                <form method="POST" action="{% url 'cancel' order.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        Yes, Cancel
+                    </button>
+                </form>
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    No
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

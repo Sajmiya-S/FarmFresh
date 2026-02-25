@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block code %}
+<div class="page">
+    <div class="signup">
+        <h1>Join FarmFresh Today!</h1>
+        <p>Fresh Produce delivered to your door</p>
+        <form method="post" class="regform">
+            {% csrf_token %}
+            {{form}}
+            <a href="{% url 'login' %}">
+                <input type="submit" value="Sign Up Now🌿" class="btn btn-success w-75">
+            </a>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="/static/css/prodetails.css">
+{% endblock %}
+
+{% block code %}
+    <div class="pro">
+        <div class="pic">
+            <img src="/shop/{{pro.pic}}" alt="">
+        </div>
+        <div class="desc">
+            <h3>{{pro.name}}</h3>
+            <h4>{{pro.description}}</h4>
+            <h1>{{pro.price}}/Kg</h1>
+            <form method="POST" action="{% url 'add2cart' pro.id %}">
+                {% csrf_token %}
+                <label>Quantity:</label>
+                <input type="number" name="quantity" value="1" min="1">
+                <div class="d-flex gap-3 mt-2">
+                    <button type="submit" name="action" value="cart" class="btn btn-success">
+                        <i class="fa-solid fa-cart-shopping me-2"></i>Add to Cart
+                    </button>
+
+                    <button type="submit" name="action" value="buy" class="btn btn-danger">
+                        <i class="fa-solid fa-bag-shopping me-2"></i>Buy Now
+                    </button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    
+    <div class="similar">
+        <h2 class="text-center mb-2">You May Also Like</h2>
+        <p class="text-center text-secondary mb-4">Hand-picked products just for you!</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
+        {% for i in allp %}
+            {% if i.id != pro.id%}
+        <a href="{% url 'pdet' i.id %} " class="text-decoration-none text-dark">
+            <div class="card sub" style="width: 18rem;">
+                <img src="/shop/{{i.pic}}" class="card-img-top product-img" alt="{{ i.name }}">
+                <div class="card-body">
+                    <h5 class="card-title ">{{ i.name }}</h5>
+                    <p class="card-text">{{i.description}}</p>
+                    <p class="card-text">₹ {{i.price}}</p>
+                    {% if i.stock == 0 %}
+                        <p class="card-text text-secondary"><strong>Out of Stock</strong></p>
+                    {% elif i.stock < 10 %}
+                        <p class="card-text text-danger"><strong>Only Few Left</strong></p>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="recent">
+        <h2 class="text-center mb-2">Recently Viewed Products</h2>
+        <p class="text-center text-secondary mb-4">Hand-picked products just for you!</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
+        {% for i in rvw %}
+            {% if i.id != pro.id%}
+        <a href="{% url 'pdet' i.id %} " class="text-decoration-none text-dark">
+            <div class="card sub" style="width: 18rem;">
+                <img src="/shop/{{i.pic}}" class="card-img-top product-img" alt="{{ i.name }}">
+                <div class="card-body">
+                    <h5 class="card-title ">{{ i.name }}</h5>
+                    <p class="card-text">{{i.description}}</p>
+                    <p class="card-text">₹ {{i.price}} /kg</p>
+                    {% if i.stock == 0 %}
+                        <p class="card-text text-secondary"><strong>Out of Stock</strong></p>
+                    {% elif i.stock < 10 %}
+                        <p class="card-text text-danger"><strong>Only Few Left</strong></p>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

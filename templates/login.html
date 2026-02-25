@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/login.css">
+{% endblock %}
+
+{% block code %}
+<div class="main">
+    <h1>Get access to your Cart and Orders</h1>
+    <div class="login">
+        <h1 class="pt-0 pb-1">Welcome Back!</h1>
+        <form method="post" class="loginform">
+            {% csrf_token %}
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+
+            <div class="check">
+                <input type="checkbox" name="Remember_me"><span>Remember Me</span>
+            </div>
+            
+            <input type="submit" value="Login">
+            <div class="new">
+                <p>New to <b>FarmFresh</b> ?  </p>
+                <a href="{% url 'signup' %}">
+                     Create an Account
+                </a>
+            </div>
+            
+        </form>
+    </div>
+</div>
+    
+
+{% endblock %}

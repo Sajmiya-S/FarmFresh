@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}"  
+     style="color: green; font-family: 'Dancing Script', cursive; font-weight: bold; font-size: 24px;">
+        <i class="fa-solid fa-leaf"></i>
+        FarmFresh
+        <i class="fa-solid fa-basket-shopping"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
+            <i class="fa-solid fa-house-chimney"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop' %}">All</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu">
+            {% for i in catz %}
+            <li><a class="dropdown-item" href="{% url 'cwise' i.id %}">{{i.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cart' %}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Cart</span>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'order' %}">
+            <i class="fa-solid fa-box"></i>
+            <span>Orders</span>
+            </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">
+            <i class="fas fa-power-off"></i>
+            <span>Logout</span>
+        </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">
+            <i class="fa-solid fa-circle-user"></i>
+            <span>{{request.user}}</span>
+        </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Cart</span>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+            <i class="fa-solid fa-box"></i>
+            <span>Orders</span>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+            <i class="fa-solid fa-key"></i>
+            <span>Login</span>
+        </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'signup' %}">
+            <i class="fas fa-user-plus"></i>
+            <span>Signup</span>
+        </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

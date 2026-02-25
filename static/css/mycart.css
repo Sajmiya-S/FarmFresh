@@ -1,0 +1,141 @@
+/* ========================= */
+/* MAIN CART LAYOUT */
+/* ========================= */
+
+.cart-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;    
+}
+
+
+.cart {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* CART ITEMS */
+
+.cart .cart-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+/* PRODUCT IMAGE */
+
+.cart .pic img {
+    flex: 1;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px grey;
+}
+
+/* PRODUCT DETAILS */
+
+.cart .details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    box-shadow: 2px 2px 10px grey;
+    border-radius: 20px;
+}
+
+/* QUANTITY CONTROLs */
+
+.cart .quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* EMPTY CART MESSAGE */
+
+.cart .empty-cart {
+    padding: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    display:flex;
+    flex-direction: column;
+}
+
+.btns{
+    padding:10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+/* CART SUMMARY */
+
+.summary {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px;
+    width: 300px;
+    min-height: 400px;
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE CART */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    /* Stack everything */
+    .cart {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    /* Cart item becomes vertical */
+    .cart .cart-item {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    /* Image full width */
+    .cart .pic img {
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+        border-radius: 15px;
+    }
+
+    /* Details full width */
+    .cart .details {
+        width: 100%;
+        padding: 12px;
+        box-shadow: none; /* cleaner on mobile */
+    }
+
+    /* Quantity buttons centered */
+    .cart .quantity {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Summary moves below */
+    .summary {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+    }
+}

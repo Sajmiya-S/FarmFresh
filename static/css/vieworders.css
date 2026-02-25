@@ -1,0 +1,39 @@
+/* Sidebar Tabs */
+#v-pills-tab .nav-link {
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+#v-pills-tab .nav-link.active {
+    background-color: #198754;
+}
+
+/* Empty Box */
+.empty-box {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 12px;
+}
+
+/* Order List Spacing */
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Responsive Tabs */
+@media (max-width: 768px) {
+    #v-pills-tab {
+        flex-direction: row !important;
+        overflow-x: auto;
+        gap: 10px;
+    }
+
+    #v-pills-tab .nav-link {
+        white-space: nowrap;
+        flex: 1;
+        text-align: center;
+    }
+}

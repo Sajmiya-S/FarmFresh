@@ -1,0 +1,117 @@
+
+.brand {
+    color: green;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+}
+
+h1{
+    color:green;
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+p{
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+.whyus{
+    display: flex;
+    gap: 50px;
+    margin: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.goals{
+    display:flex;
+    flex-direction: column;
+    margin-top:50px;
+}
+.list{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    
+}
+img{
+    border-radius: 20px;
+    height: 400px;
+}
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.msg{
+    display:flex;
+    gap: 50px;
+    flex-wrap: wrap; 
+}
+.msgform{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+.msgform input,
+.msgform textarea{
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.3s ease;
+}
+
+.msgform input:focus,
+.msgform textarea:focus{
+    border: 2px solid green;
+    outline: none;
+}
+
+.msgform input:hover{
+    border: 2px solid green;
+}
+.msgform label{
+    display:none;
+}
+.msgform input[type='submit']{
+    background-color: green;
+    color: white;
+}
+.msgform input[type='submit']:hover{
+    background:rgb(4, 96, 4)
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+    .whyus{
+        flex-direction: column;
+        margin: 20px;
+        gap: 30px;
+    }
+
+    .msg{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .msgform{
+        width: 100%;
+    }
+
+    img{
+        height: auto;       
+        width: 100%;
+        max-width: 350px;
+    }
+}

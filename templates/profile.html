@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="/static/css/profile.css">
+{% endblock %}
+
+{% block code %}
+    <div class="main">
+    <div class="info mt-3">
+        <img src="/static/images/profile.png" height=" 100px" width="100px">
+        <h2>{{pro.customer.username}}</h2>
+        <p><i class="fa-solid fa-envelope"></i> {{pro.email}}</p>
+        <p><i class="fa-solid fa-phone"></i> {{pro.phone}}</p>
+        <a href="{%  url 'editp' pro.id %}">
+            <input type="submit" value="Edit Profile">
+        </a>
+    </div>
+    <div class="profile-menu">
+        <div class="menu-item">
+            <a href="{% url 'order' %}">
+            <i class="fa-solid fa-box"></i>
+            <span>My Orders</span></a>
+            <a href="{% url 'order' %}">
+            <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+
+        <div class="menu-item">
+            <a href="{% url 'cart' %}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>My Cart</span></a>
+            <a href="{% url 'cart' %}">
+            <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+
+        <div class="menu-item">
+            <a href="{% url 'viewaddr' %}">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Saved Addresses</span></a>
+            <a href="{% url 'viewaddr' %}">
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+
+        <div class="menu-item logout">
+            <a href="{% url 'logout' %}">
+                <i class="fa-solid fa-power-off"></i>
+                <span>Log Out</span>
+            </a>
+        </div>
+    </div>
+</div>    
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/editaddress.css' %}">
+{% endblock %}
+
+{% block code %}
+<div class="addr">
+    <h1>Add a new address</h1>
+    <form method="post" class="addressform">
+        {% csrf_token %}
+        {{form}}
+        <a href="{% url 'editaddr' addr.id %}">
+            <input type="submit" value="Update">
+        </a>
+    </form>
+</div>
+
+{% endblock %}

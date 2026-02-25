@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/placeorder.css' %}">
+{% endblock %}
+
+{% block code %}
+    <div class="main">
+        <h1 class="text-center">Place Your Order</h1>
+        <p class="text-muted text-center">Review cart items and place your order</p>
+        {%if profile.phone is none %}
+            <div class="address d-flex flex-wrap justify-content-center">
+                <a href="{% url 'editp' profile.id %}?next={{ request.get_full_path }}">
+                    <button class="btn btn-primary">Update your Profile to continue</button>
+                </a>
+            </div>  
+        {% else %}      
+            {% if address %}
+            <h5 class="text-center">Choose Delivery Address:</h5>
+            <form method="post">
+                {% csrf_token %}
+                <div class="address d-flex flex-wrap justify-content-center">
+                    {% for i in address %}
+                        <label class="card addr-card text-center p-2 m-2 border-success"
+                            style="width: 18rem; cursor:pointer;">
+
+
+                            <input type="radio"
+                                name="address_id"
+                                value="{{ i.id }}"
+                                {% if forloop.first %}checked{% endif %}
+                                required>
+
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">{{ i.name }}</h6>
+                                <p class="card-text">
+                                    {{ i.house_no }}, {{ i.street }}, {{ i.city }},
+                                    {{ i.district }}, {{ i.state }} - {{ i.pin }}
+                                </p>
+                                <p class="card-text">Ph: {{ i.phone }}</p>
+                            </div>
+                        </label>
+                    {% endfor %}
+                </div>
+                <div class="summary">
+                    <div class="orders">
+                        <div class="items">
+                            {% for item in items %}
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="/shop/{{ item.product.pic }}">
+                                </div>
+                                <div class="left">
+                                    <h3>{{ item.product.name }}</h3>
+                                    <h5>{{ item.quantity }} kg</h5>
+                                </div>
+                                <div class="right">
+                                    <span class="text-end"><strong>Rs. {{ item.sub_total }}</strong></span>
+                                </div>   
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>  
+                    <table class="table table-borderless tb px-2 py-1 rounded text-center">
+                        <thead>
+                            <tr>
+                                <th colspan="2" class="text-center">
+                                    <h4 class="mb-3">Order Summary</h4>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-start">Items</td>
+                                <td class="text-end">{{ total_items }}</td>
+                            </tr>
+                            
+                            <tr class="fw-bold">
+                                <td class="text-start"><h5>Total</h5></td>
+                                <td class="text-end"><h5>Rs. {{ total_price }}</h5></td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-start">Payment method</td>
+                                <td class="text-end">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" 
+                                            name="payment_method" id="cod" value="cod" required>
+                                        <label class="form-check-label" for="cod">COD</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" 
+                                            name="payment_method" id="online" value="online" required>
+                                        <label class="form-check-label" for="online">Pay Online</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btns">
+                    <a href="{% url 'cart' %}" class="btn btn-primary">Back to Cart</a>
+                    <button type="submit" class="btn btn-success">Continue</button>
+                    
+                </div>
+            </form>
+            
+            {% else %}  
+            
+            <div class="alert alert-warning text-center">
+                No delivery address found. Please add one to continue.
+            </div>          
+            <div class="address d-flex flex-wrap justify-content-center">
+                <a href="{% url 'addr' %}?next={{ request.get_full_path }}">
+                    <button class="btn btn-primary">Add Shipping Address</button>
+                </a>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+            
+{% endblock %}

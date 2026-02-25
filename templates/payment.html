@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/payment.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+{% endblock %}
+
+{% block code %}
+    
+<div class="main">
+    <h1 class="text-center">Secure Payment</h1>
+    <p class="text-muted text-center">
+        You’ve selected the online payment option. Please complete the payment to proceed with your order.
+    </p>
+    <table class="table table-borderless tb px-2 py-1 rounded text-center">
+        <thead>
+            <tr>
+                <th colspan="2" class="text-center">
+                    <h4 class="mb-3">Order Summary</h4>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-start">Items</td>
+                <td class="text-end">{{ total_items }}</td>
+            </tr>
+                            
+            <tr class="fw-bold">
+                <td class="text-start"><h5>Total</h5></td>
+                <td class="text-end"><h5>Rs. {{ total_price }}</h5></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="rzp-btn" class="btn btn-primary">
+        Pay Now
+    </button>
+    <img src="/static/images/badges.png" class="img-fluid badge-img" alt="security badge">
+</div>
+
+<script>
+var options = {
+    key: "{{ razorpay_merchant_key }}",
+    amount: "{{ razorpay.amount }}",
+    currency: "{{currency}}",
+    name: "FarmFresh",
+    description: "Order Payment",
+    order_id: "{{ razorpay_order_id }}",
+    callback_url: "{{ callback_url }}",
+
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+
+var rzp1 = new Razorpay(options);
+
+document.getElementById('rzp-btn').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+};
+</script>
+
+
+{% endblock %}

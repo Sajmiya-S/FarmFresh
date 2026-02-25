@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/cwise.css">
+{% endblock %}
+
+{% block code %}
+    <h1 class="text-center mt-4" 
+    style="font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-size: 3rem;
+    color:green;">
+    Harvested with Love, Delivered Fresh</h1>
+    <div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
+    {% for i in pro %}
+    <a href="{% url 'pdet' i.id %} " class="text-decoration-none text-dark">
+        <div class="card sub" style="width: 18rem;">
+            <img src="/shop/{{i.pic}}" class="card-img-top product-img" alt="{{i.pic}}">
+            <div class="card-body">
+                <h5 class="card-title ">{{ i.name }}</h5>
+                <p class="card-text">{{i.description}}</p>
+                <p class="card-text">₹ {{i.price}}/kg</p>
+                {% if i.stock == 0 %}
+                    <p class="card-text text-secondary"><strong>Out of Stock</strong></p>
+                {% elif i.stock < 10 %}
+                    <p class="card-text text-danger"><strong>Only Few Left</strong></p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

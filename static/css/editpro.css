@@ -1,0 +1,105 @@
+body{
+    background-image: url(/static/images/bg2.png);
+    background-repeat: no-repeat;
+    background-position: center 80%;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Main container */
+.main{
+    max-width: 420px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Profile info card */
+.info{
+    text-align: center;
+    padding: 15px;
+}
+
+.info img{
+    margin-bottom: 10px;
+}
+
+.info h2{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.info p{
+    color: #666;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.info i{
+    color: #8bc34a;
+    margin-right: 6px;
+}
+
+/* Edit profile button */
+.info input[type="submit"]{
+    margin-top: 10px;
+    background: #2196f3;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.info input[type="submit"]:hover{
+    background: #1976d2;
+}
+
+/* Menu section */
+.profile-menu{
+    margin-top: 15px;
+}
+
+/* Menu item card */
+.menu-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+.menu-item a{
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.menu-item i{
+    font-size: 16px;
+    color: #8bc34a;
+}
+
+.menu-item .fa-angle-right{
+    color: #999;
+}
+
+/* Logout style */
+.menu-item.logout{
+    background: #ffecec;
+}
+
+.menu-item.logout i,
+.menu-item.logout span{
+    color: #e53935;
+}

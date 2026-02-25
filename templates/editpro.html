@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/editpro.css' %}">
+{% endblock %}
+
+{% block code %}
+<div class="main">
+    <div class="info">
+        <img src="/static/images/profile.png" height=" 100px" width="100px">
+        <h2>{{pro.customer.username}}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            {{form.as_p}}
+            <input type="submit" value="Confirm Edit" class="btn-submit">
+        </form>
+
+    </div>
+    <div class="profile-menu">
+        <div class="menu-item">
+            <a href="">
+            <i class="fa-solid fa-box"></i>
+            <span>My Orders</span></a>
+            <a href="">
+            <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+
+        <div class="menu-item">
+            <a href="{% url 'cart' %}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>My Cart</span></a>
+            <a href="{% url 'cart' %}">
+            <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+
+        <div class="menu-item">
+            <a href="{% url 'viewaddr' %}">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Saved Addresses</span></a>
+            <a href="{% url 'viewaddr' %}">
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+
+        <div class="menu-item logout">
+            <a href="{% url 'logout' %}">
+                <i class="fa-solid fa-power-off"></i>
+                <span>Log Out</span>
+            </a>
+        </div>
+    </div>
+</div>    
+
+{% endblock %}

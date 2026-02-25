@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block code %}
+    <div class="main">
+        <h1 style="font-family: 'Dancing Script', cursive; font-weight: bold;">Fresh From Our Farm to Your Table</h1>
+        <h2 style="font-family: 'Amatic SC', cursive; font-weight: 700;"> Organic, locally-sourced fruits and vegetables</h2>
+        <div class="btn">
+            <a href="{% url 'catz' %}">
+                <button>Shop Now</button>
+            </a>
+            <a href="{% url 'about' %}">
+                <button>Learn More</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/vieworders.css' %}">
+{% endblock %}
+
+{% block code %}
+
+<div class="container my-5">
+
+    <!-- PAGE TITLE -->
+    <div class="text-center mb-4">
+        <h1 class="mb-2">My Orders</h1>
+        <p class="text-muted">Here are your recent orders</p>
+    </div>
+
+    <div class="row">
+
+        <!-- SIDEBAR TABS -->
+        <div class="col-md-3 mb-4">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#all">All</button>
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pending">Pending</button>
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#shipped">Shipped</button>
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#delivered">Delivered</button>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT -->
+        <div class="col-md-9">
+            <div class="tab-content">
+
+                <!-- ALL ORDERS -->
+                <div class="tab-pane fade show active" id="all">
+                    {% if not orders %}
+                        <div class="empty-box text-center">
+                            <h5>No orders yet!</h5>
+                            <p class="text-muted">Looks like you haven’t placed any orders yet.</p>
+                            <img src="/static/images/bg3.png" class="img-fluid h-25">
+                            <a href="{% url 'shop' %}" class="btn btn-success mt-2">
+                                Start Shopping
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="order-list">
+                            {% for order in orders %}
+                                {% include 'order.html' %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- PENDING -->
+                <div class="tab-pane fade" id="pending">
+                    {% if not pending %}
+                        <div class="empty-box text-center">
+                            <h5>No pending orders</h5>
+                            <img src="/static/images/o1.png" class="img-fluid h-25">
+                            <a href="{% url 'home' %}" class="btn btn-success mt-2">
+                                Shop Now
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="order-list">
+                            {% for order in pending %}
+                                {% include 'order.html' %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- SHIPPED -->
+                <div class="tab-pane fade" id="shipped">
+                    {% if not shipped %}
+                        <div class="empty-box text-center">
+                            <h5>No shipped orders</h5>
+                            <img src="/static/images/o1.png" class="img-fluid h-25">
+                            <a href="{% url 'home' %}" class="btn btn-success mt-2">
+                                Shop Now
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="order-list">
+                            {% for order in shipped %}
+                                {% include 'order.html' %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- DELIVERED -->
+                <div class="tab-pane fade" id="delivered">
+                    {% if not delivered %}
+                        <div class="empty-box text-center">
+                            <h5>No delivered orders</h5>
+                            <img src="/static/images/o2.png" class="img-fluid h-25">
+                            <a href="{% url 'home' %}" class="btn btn-success mt-2">
+                                Shop Now
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="order-list">
+                            {% for order in delivered %}
+                                {% include 'order.html' %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/catz.css">
+{% endblock %}
+
+{% block code %}
+    
+<h1 class="text-center mt-3 mb-1">Farm to Fork Freshness</h1>
+<p class="text-center text-secondary mb-4">Explore our vibrant range of fruits, veggies, and healthy picks.</p>
+<div class="row justify-content-center mt-5">
+  {% for i in catz %}
+  <div class="col-auto">
+    <a href="{% url 'cwise' i.id %}" class="text-decoration-none text-dark">
+      <div class="card sub h-100 ">
+        <img src="/shop/{{ i.pic }}" class="card-img-top img-fluid catz-img" alt="{{ i.name }}">
+        <div class="card-body">
+          <h3 class="card-title text-center">{{ i.name }}</h3>
+          <p class="card-text text-center">{{ i.description }}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="/static/css/mycart.css">
+{% endblock %}
+
+{% block code %}
+<h1 class="text-center mb-2 p-2">My Cart</h1>
+
+<div class="cart-container">
+
+    {% if items %}
+
+    <!-- CART + SUMMARY WRAPPER -->
+    <div class="cart">
+
+        <!-- CART ITEMS -->
+        <div class="cart-items">
+
+            {% for item in items %}
+            <div class="cart-item">
+
+                <!-- PRODUCT IMAGE -->
+                <div class="pic">
+                    <img src="/shop/{{ item.product.pic }}">
+                </div>
+
+                <!-- PRODUCT DETAILS -->
+                <div class="details">
+                    <h3>{{ item.product.name }}</h3>
+                    <h5>Rs. {{ item.product.price }}/Kg</h5>
+
+                    <div class="quantity my-2">
+                        <span class="mx-2">Quantity :</span>
+
+                        <a href="{% url 'update' item.id 'dec' %}"
+                           class="btn btn-sm btn-outline-danger">−</a>
+
+                        <span class="px-2 py-1 border rounded text-center">
+                            {{ item.quantity }}
+                        </span>
+
+                        <a href="{% url 'update' item.id 'inc' %}"
+                           class="btn btn-sm btn-outline-success">+</a>
+
+                        <a href="{% url 'remove' item.id %}"
+                           class="btn btn-sm btn-danger mx-5">
+                            Remove
+                        </a>
+                    </div>
+
+                    <span class="mx-2">
+                        Subtotal : Rs. {{ item.sub_total }}
+                    </span>
+                </div>
+
+            </div>
+            {% endfor %}
+            <div class="btns">
+                <a href="{% url 'shop' %}">
+                    <button type="submit" class="btn btn-success">Continue Shopping <i class="fa-solid fa-caret-right"></i></button>
+                </a>
+                <a href="{% url 'clear' %}">
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i>  Clear Cart</button>
+                </a>
+                
+            </div>
+            
+        </div>
+
+        <!-- CART SUMMARY -->
+        <div class="summary px-2 py-1 border rounded text-center">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="text-center">
+                            <h4 class="mb-3">Cart Summary</h4>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-start">Items</td>
+                        <td class="text-end">{{ cart.total_items }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-start">Subtotal</td>
+                        <td class="text-end">Rs. {{ cart.total_price }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-start">Shipping</td>
+                        <td class="text-end">Rs. 40</td>
+                    </tr>
+                    <tr class="fw-bold">
+                        <td class="text-start"><h3>Total</h3></td>
+                        <td class="text-end"><h3>Rs. {{ cart.grand_total }}</h3></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="{% url 'porder' %}">
+                <button class="btn btn-success mx-5">
+                    Place Order
+                </button>
+            </a>
+        </div>
+
+    </div>
+
+    {% else %}
+    <!-- EMPTY CART MESSAGE -->
+    <div class="text-center mt-4">
+        <h5>Your cart is empty 🛒</h5>
+        <p class="text-muted">Looks like you haven’t added anything yet.</p>
+        <a href="{% url 'shop' %}" class="btn btn-success mt-2">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Start Shopping
+        </a>
+        <img src="/static/images/empty.png" class="img-fluid mx-auto d-block mb-3 w-50" alt="Empty Cart">
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
