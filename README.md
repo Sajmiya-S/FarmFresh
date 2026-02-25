@@ -56,7 +56,6 @@ This application allows users to browse products, add items to cart, and place o
 ## 📂 Project Structure
 
 FarmFresh/
-
 │
 
 ├── app_name/
